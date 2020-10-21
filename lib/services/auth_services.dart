@@ -17,9 +17,27 @@ class AuthServices {
             await UserServices.updateUser(user);  
             return SignInSignOutResult(user: user);
           } catch(e){
-            return SignInSignOutResult(message: e.toString());
+            return SignInSignOutResult(message: e.toString().split(',')[1]);
           }
         }
+    
+    static Future<SignInSignOutResult> signIn(
+      String email, String password) async{
+        try {
+          AuthResult result = await _auth.signInWithEmailAndPassword(
+          email: email, password: password);
+
+          User user = await result.user.fromFirestore();
+
+          return SignInSignOutResult(user: user);
+          } catch (e){
+            return SignInSignOutResult(message: e.toString().split(',')[1]);
+          }
+      }  
+
+    static Future<void> signOut() async{
+      await _auth.signOut();
+    }   
 }
 
 class SignInSignOutResult{
