@@ -38,14 +38,15 @@ class SplashPage extends StatelessWidget {
                 margin: EdgeInsets.only(top: 70, bottom:19),
                 child: RaisedButton(
                   child: Text("Get Started", 
-                  style: whiteTextFont.copyWith(fontSize: 16),),
+                  style: whiteTextFont.copyWith(fontSize: 16),
+                  ),
                   color:  mainColor,
                   onPressed: () {}),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                  Text("Already have an account?", 
+                  Text("Already have an account? ", 
                   style: greyTextFont.copyWith(
                     fontWeight: FontWeight.w400),
                   ),
