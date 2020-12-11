@@ -50,9 +50,14 @@ class SplashPage extends StatelessWidget {
                   style: greyTextFont.copyWith(
                     fontWeight: FontWeight.w400),
                   ),
-                  Text(
-                    "Sign In",
-                    style: purpleTextFont,
+                  GestureDetector(
+                    onTap:  (){
+                      context.bloc<PageBloc>().add(GoToLoginPage());
+                    },
+                      child: Text(
+                      "Sign In",
+                      style: purpleTextFont,
+                    ),
                   )
                 ],
                 )
