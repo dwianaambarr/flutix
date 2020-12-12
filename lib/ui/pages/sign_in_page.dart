@@ -17,6 +17,10 @@ class _SignInPageState extends State<SignInPage>{
   @override
   // TODO: implement widget
   Widget build(BuildContext context){
+    context
+    .bloc<ThemeBloc>()
+    .add(ChangeTheme(ThemeData().copyWith(primaryColor: accentColor2)));
+    
     return Scaffold(
       backgroundColor:  Colors.white,
       // appBar: AppBar(title:  Text("Sign In Page"),),
@@ -32,7 +36,8 @@ class _SignInPageState extends State<SignInPage>{
             SizedBox(height: 70, child: Image.asset("assets/logo.png"),),
             Container(
               margin: EdgeInsets.only(top: 70, bottom: 40),
-              child: Text("Welcome Back,\nExplorer!", style: blackTextFont.copyWith(fontSize: 20),),
+              child: Text("Welcome Back,\nExplorer!", 
+              style: blackTextFont.copyWith(fontSize: 20),),
             ),
             TextField(
               controller:  emailController,
@@ -44,20 +49,20 @@ class _SignInPageState extends State<SignInPage>{
               hintText: "Email Address"
               ),
             ),
+            SizedBox(height: 16,
+            ),
             TextField(
               controller:  passwordController, obscureText: true,
               decoration:  InputDecoration(
                 border:  OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
-              labelText: "Email Address",
-              hintText: "Email Address"
+              labelText: "Password",
+              hintText: "Password"
               ),
             ),
-            SizedBox(height: 16,
+            SizedBox(height: 6,
             ),
-            TextField(),
-            SizedBox(height: 6,),
             Row(
               children: <Widget>[
                 Text("Forgot Password? ", 
@@ -77,14 +82,19 @@ class _SignInPageState extends State<SignInPage>{
                 height: 50,
                 margin: EdgeInsets.only(top: 40, bottom: 30),
                 child: FloatingActionButton(
+                  child:  Icon(Icons.arrow_forward),
                   backgroundColor: mainColor,
                   onPressed: () {}),
                 ),
             ),
             
-            Row(children: <Widget>[
-              Text("Start Fresh Now? ", style: greyTextFont.copyWith(fontWeight: FontWeight.w400),),
-              Text("Sign Up", style: purpleTextFont,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+              Text("Start Fresh Now? ", 
+              style: greyTextFont.copyWith(fontWeight: FontWeight.w400),),
+              Text("Sign Up", 
+              style: purpleTextFont,
               )
             ])
           ],
